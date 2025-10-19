@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "phoneetl-modules"
+version = "0.1.0"
+description = "Text utilities used by PhoneETL: fullwidth conversion, remove spaces, remove symbols"
+readme = "README.md"
+authors = [ { name = "Anson", email = "anon@example.com" } ]
+license = { text = "MIT" }
+keywords = ["phone", "etl", "text", "utils"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Ansontw1210/PhoneETL"
