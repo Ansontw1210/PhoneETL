@@ -1,0 +1,4 @@
+phone,expected_valid,expected_available
+0968123456,True,True
+0900000000,True,True
+0999999999,True,True

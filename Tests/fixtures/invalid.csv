@@ -1,0 +1,4 @@
+phone,expected_valid,expected_available
+12345,False,False
+0968 123 456,False,False
+0968-123-456,False,False

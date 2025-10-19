@@ -1,0 +1,4 @@
+phone,expected_valid,expected_available
+0968123456,True,True
+0911888999,True,False
+12345,False,False
