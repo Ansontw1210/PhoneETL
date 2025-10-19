@@ -2,7 +2,7 @@ import unittest
 import csv
 import glob
 import os
-import json
+import csv as _csv
 import time
 from Utils.regex_helper import is_valid_phone_number
 from Services.phone_service import check_phone_availability
@@ -62,9 +62,16 @@ class TestCSVValidation(unittest.TestCase):
         reports_dir = os.path.join('Tests', 'results')
         os.makedirs(reports_dir, exist_ok=True)
         ts = time.strftime('%Y%m%d-%H%M%S')
-        report_path = os.path.join(reports_dir, f'report-{ts}.json')
-        with open(report_path, 'w', encoding='utf-8') as rf:
-            json.dump({'fixtures_dir': fixtures_dir, 'results': results}, rf, ensure_ascii=False, indent=2)
+        report_path = os.path.join(reports_dir, f'report-{ts}.csv')
+        # Write CSV report
+        fieldnames = ['fixture', 'phone', 'expected_valid', 'expected_available', 'actual_valid', 'actual_available', 'pass', 'note']
+        with open(report_path, 'w', encoding='utf-8', newline='') as rf:
+            writer = _csv.DictWriter(rf, fieldnames=fieldnames)
+            writer.writeheader()
+            for r in results:
+                # Normalize boolean values to True/False strings for CSV clarity
+                row = {k: (str(v) if not isinstance(v, bool) else str(v)) for k, v in r.items() if k in fieldnames}
+                writer.writerow(row)
 
         # If any row failed, make the test fail and point to report
         if any_failed:
